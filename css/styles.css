@@ -14,6 +14,51 @@ valores*/
 /*Selector de id #*/
 /* #portafolio */
 
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?no1974');
+    src:  url('../fonts/icomoon.eot?no1974#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?no1974') format('truetype'),
+      url('../fonts/icomoon.woff?no1974') format('woff'),
+      url('../fonts/icomoon.svg?no1974#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-menu:before {
+    content: "\e900";
+  }
+  .icon-instagram:before {
+    content: "\e904";
+    font-size: 50px;
+  }
+  .icon-github:before {
+    content: "\e903";
+    font-size: 50px;
+  }
+  .icon-facebook:before {
+    content: "\e902";
+    font-size: 50px;
+  }
+  .icon-twitter:before {
+    content: "\e901";
+    font-size: 50px;
+  }
 body {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
@@ -60,6 +105,7 @@ h2{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .hero-image {
@@ -88,6 +134,7 @@ h2{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .project-title {
@@ -111,11 +158,15 @@ h2{
 }
 
 .project-details {
-    width: 500px;
+    width: 50%;
 }
 
 .project-imageContainer {
-    width: 500px;
+    width: 50%;
+}
+
+.project-imageContainer img {
+    max-width: 100%;
 }
 
 .header {
@@ -125,6 +176,10 @@ h2{
     height: 70px;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 3;
 }
 
 .menu {
@@ -168,6 +223,7 @@ figure{
     display: flex;
     align-items:center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .footer img {
@@ -188,8 +244,8 @@ figure{
 }
 
 .event {
-    margin: 10px;
-    width: 480px;
+    margin: 1%;
+    width: 48%;
     flex-shrink: 0; 
     border-radius: 10px;
     overflow: hidden; 
@@ -224,15 +280,19 @@ figure{
 }
 
 .contact {
-    background-color: #8805ff;
+    background-color: #056fff;
     color: white;
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.social {
+.social a{
+    color: white;
+    margin-right: 1em; 
+    text-decoration: none;
 }
 
 .social-link {
@@ -242,10 +302,36 @@ figure{
     margin: 0 10px;
 }
 
+.social-link.twitter {
+    background-image: url('../images/twitter.svg');
+    background-size: 50px 50px; 
+}
 
 .social-link.facebook {
     background-image: url('../images/facebook.svg');
     background-size: 50px 50px; 
+}
+
+.social-link.github {
+    background-image: url('../images/github.svg');
+    background-size: 50px 50px; 
+}
+
+.social-link.instagram {
+    background-image: url('../images/instagram.svg');
+    background-size: 50px 50px; 
+}
+
+.contact-email input{
+    border-color: gray;
+    border-style: solid;
+    padding: 10px 20px 10px 25px;
+    border-radius: 5px; 
+    background-image: url('../images/envelope.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position-y: center;  
+    background-position-x: 5px;
 }
 
 .contact-email button{
@@ -265,11 +351,183 @@ figure{
 }
 
 .container {
-    width: 1000px;
+    max-width: 1000px;
+    width: 100%;
+    flex: 1;
     margin: 0 auto;
     display: inherit;
     justify-content: inherit;
     align-items: inherit;
     height: inherit;
     flex-wrap: inherit; 
+}
+
+/* Desktop First, empezar del MQ mas alto */
+
+.burger-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: black;
+    display: none;
+    line-height: 40px;
+    text-align: center;
+    position: fixed; 
+    z-index: 5;
+    left: 5px;
+    top: 5px;
+    color: white;
+}
+
+@media screen and (max-width: 1024px){
+    .hero {
+        height: auto;
+        position: relative;
+        overflow: hidden;
+        padding: 2em;
+    }
+    .hero-image {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    h1 {
+        font-size: 2em;
+        z-index: 2;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .event-list-title {
+        margin-left: 0;
+    }
+    .burger-button {
+        display: block;
+    }
+    h2 {
+        font-size: 1.2em;
+        margin: .2em 0;
+    }
+    .portfolio {
+        padding: 5px;
+    }
+    .header {
+        display: block;
+        height: auto;
+        position: initial;
+    }
+    .header ol {
+        display: block;
+    }
+    .header ol li {
+        height: 50px;
+    }
+    .header a {
+        justify-content: center;
+        height: 40px;
+        font-size: 2em;
+        text-decoration: underline;
+        margin-bottom: .5em;
+    }
+    .header .logo {
+        text-align: center;
+    }
+    .menu {
+        position: fixed;
+        background: rgba(5, 111, 255, .9);;
+        z-index: 4;
+        top: 0;
+        left: -100vw;
+        bottom: 0;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .3s;
+    }
+    .menu.is-active {
+        left: 0;
+    }
+    .project {
+        display: block;
+    }
+    .project-imageContainer {
+        text-align: center;
+        width: auto;
+    }
+    .project-details{
+        width: auto;
+    }
+    .project-course, .project-date, .project-url {
+        margin: .4em 0;
+    }
+    .project-title {
+        font-size: 1.5em;
+        margin-bottom: .3em;
+    }
+    .project-url {
+        font-size: 1em;
+    }
+    .project-course {
+        font-size: .7em;
+    }
+    .project-date {
+        font-size: 1em;
+    }
+    .project-description {
+        font-size: 1.1em;
+    }
+    .event {
+        width: auto;
+        flex-shrink: initial;
+    }
+    .event img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 540px){
+    .contact {
+        height: auto;
+        padding: 1.5em 0;
+        text-align: center;
+        display: block;
+    }
+    .contact-email button {
+        margin: 1em auto;
+    }
+    .contact-email {
+        margin-top: 0;
+    }
+    .footer {
+        display: block;
+        text-align: center;
+        border: 1px solid transparent;
+    }
+}
+
+@media screen and (max-width: 480px){
+    h1 {
+        font-size: 1.5em;
+    }
+    .project-details {
+        font-size: 14px;
+    }
+    .event-detail {
+        margin: -2em .5em .5em;
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width: 320px){
+    h1{
+        font-size: 1.2em;
+    }
+    .hero {
+        padding: 2em 1em;
+    }
 }
